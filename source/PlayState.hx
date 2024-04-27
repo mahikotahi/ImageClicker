@@ -82,6 +82,28 @@ class PlayState extends FlxState
 			}
 		}
 
+		if (FileSystem.readDirectory('assets/images') != items)
+		{
+			try
+			{
+				var thing = FileSystem.readDirectory('assets/images');
+				items = thing;
+				if (items == null)
+				{
+					trace('wtf did u do');
+					items = ['Apple.png', 'Gem.png', 'Hammer.png', 'Overrider.png', 'Stabber.png'];
+				}
+				else
+				{
+					trace(items);
+				}
+			}
+			catch (e)
+			{
+				items = ['Apple.png', 'Gem.png', 'Hammer.png', 'Overrider.png', 'Stabber.png'];
+			}
+		}
+
 		super.update(elapsed);
 	}
 }
