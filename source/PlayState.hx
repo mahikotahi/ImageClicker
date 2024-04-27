@@ -5,6 +5,7 @@ import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
+import sys.FileSystem;
 
 class PlayState extends FlxState
 {
@@ -16,6 +17,21 @@ class PlayState extends FlxState
 
 	override public function create()
 	{
+		try
+		{
+			var thing = FileSystem.readDirectory('assets/images');
+			items = thing;
+			if (items == null)
+			{
+				trace('wtf did u do');
+				items = ['Apple', 'Gem', 'Hammer', 'Overrider', 'Stabber'];
+			}
+		}
+		catch (e)
+		{
+			items = ['Apple', 'Gem', 'Hammer', 'Overrider', 'Stabber'];
+		}
+
 		itemGRP = new FlxTypedGroup<FlxSprite>();
 
 		for (i in 0...items.length)
