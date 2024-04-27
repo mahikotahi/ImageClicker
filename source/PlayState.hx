@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.text.FlxText;
 
 class PlayState extends FlxState
 {
@@ -11,6 +12,7 @@ class PlayState extends FlxState
 	var itemGRP:FlxTypedGroup<FlxSprite>;
 	var baldiboints:Int = 0;
 	var selectedItem:Int = 0;
+	var paldboints:FlxText;
 
 	override public function create()
 	{
@@ -26,11 +28,18 @@ class PlayState extends FlxState
 
 		add(itemGRP);
 
+		paldboints = new FlxText(10, 20);
+		paldboints.font = 'assets/data/COMICSANS.TTF';
+		paldboints.size = 24;
+		add(paldboints);
+
 		super.create();
 	}
 
 	override public function update(elapsed:Float)
 	{
+		paldboints.text = 'Points: ' + baldiboints;
+
 		for (i in 0...itemGRP.members.length)
 		{
 			if (FlxG.mouse.overlaps(itemGRP.members[i]) && selectedItem == 0)
