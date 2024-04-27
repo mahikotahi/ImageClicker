@@ -1,0 +1,89 @@
+header {
+  version { "1.00" }
+  build { "2017.5.29" }
+}
+environment {
+  grid { 1 10 50 50 }
+  lighting {
+    intensity { 1 }
+    ambientintensity { 0.20000 }
+  }
+  framerate { 30 }
+  limitplayback { }
+  film {
+    size { 400 300 }
+    ratio { 4 3 }
+  }
+  image {
+    size { 400 400 }
+  }
+}
+material { "material01"
+  surface {
+    /* RGB chunk no longer used */
+    rgb { 139 63 13 }
+    lockambientdiffuse { }
+    ambient {
+      rgb { 139 63 13 }
+      factor { 0.30000 }
+    }
+    diffuse {
+      rgb { 139 63 13 }
+      factor { 0.70000 }
+    }
+    specular {
+      rgb { 255 255 255 }
+      factor { 0.20000 }
+    }
+    phongsize { 32 }
+  }
+}
+material { "material02"
+  surface {
+    /* RGB chunk no longer used */
+    rgb { 47 42 76 }
+    lockambientdiffuse { }
+    ambient {
+      rgb { 47 42 76 }
+      factor { 0.30000 }
+    }
+    diffuse {
+      rgb { 47 42 76 }
+      factor { 0.70000 }
+    }
+    specular {
+      rgb { 255 255 255 }
+      factor { 0.20000 }
+    }
+    phongsize { 32 }
+  }
+}
+object { "object01"
+  cylinder {
+    name { "cylinder01" }
+    base {
+      origin { (-50.602 -38.655 0) }
+    }
+    material { "material02" }
+    length { 59.237 }
+    diameter { 31.325 }
+    topdiameter { 31.325 }
+    longlat { 12 8 }
+    capend { }
+    capstart { }
+  }
+  cylinder {
+    name { "cylinder02" }
+    base {
+      origin { (-1.004 -9.9398 0) }
+      orientation { (0 0 0.70711 0.70711) }
+    }
+    material { "material01" }
+    length { 34.137 }
+    diameter { 6.8273 }
+    topdiameter { 6.8273 }
+    longlat { 12 8 }
+    capend { }
+    capstart { }
+  }
+}
