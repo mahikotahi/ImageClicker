@@ -59,6 +59,13 @@ class PlayState extends FlxState
 						selectedItem = 0;
 					}
 				}
+				else
+				{
+					if (selectedItem != 0 && FlxG.mouse.justPressed)
+					{
+						selectedItem = i + 1;
+					}
+				}
 			}
 		}
 
