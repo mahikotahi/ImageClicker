@@ -8,7 +8,7 @@ import flixel.text.FlxText;
 
 class PlayState extends FlxState
 {
-	var items:Array<Dynamic> = ['Apple', 'Gem', 'Hammer', 'Overrider', 'RedCan', 'Stabber'];
+	var items:Array<Dynamic> = ['Apple', 'Gem', 'Hammer', 'Overrider', 'Stabber'];
 	var itemGRP:FlxTypedGroup<FlxSprite>;
 	var baldiboints:Int = 0;
 	var selectedItem:Int = 0;
@@ -42,6 +42,9 @@ class PlayState extends FlxState
 
 		for (i in 0...itemGRP.members.length)
 		{
+			if (itemGRP.members[i].graphic == null)
+				itemGRP.members[i].loadGraphic('assets/images/' + items[FlxG.random.int(0, 6)] + '.png');
+
 			if (FlxG.mouse.overlaps(itemGRP.members[i]) && selectedItem == 0)
 			{
 				selectedItem = i + 1;
