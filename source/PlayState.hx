@@ -45,16 +45,19 @@ class PlayState extends FlxState
 			if (itemGRP.members[i].graphic == null)
 				itemGRP.members[i].loadGraphic('assets/images/' + items[FlxG.random.int(0, 6)] + '.png');
 
-			if (FlxG.mouse.overlaps(itemGRP.members[i]) && selectedItem == 0)
+			if (FlxG.mouse.overlaps(itemGRP.members[i]))
 			{
-				selectedItem = i + 1;
-
-				if (FlxG.mouse.justPressed)
+				if (selectedItem == 0 || selectedItem = i + 1)
 				{
-					itemGRP.members[i].setPosition(FlxG.random.float(0, 960), FlxG.random.float(0, 530));
-					itemGRP.members[i].loadGraphic('assets/images/' + items[FlxG.random.int(0, 6)] + '.png');
-					baldiboints += FlxG.random.int(10, 200);
-					selectedItem = 0;
+					selectedItem = i + 1;
+
+					if (FlxG.mouse.justPressed)
+					{
+						itemGRP.members[i].setPosition(FlxG.random.float(0, 960), FlxG.random.float(0, 530));
+						itemGRP.members[i].loadGraphic('assets/images/' + items[FlxG.random.int(0, 6)] + '.png');
+						baldiboints += FlxG.random.int(10, 200);
+						selectedItem = 0;
+					}
 				}
 			}
 		}
