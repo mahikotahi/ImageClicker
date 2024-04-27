@@ -10,6 +10,7 @@ class PlayState extends FlxState
 	var items:Array<Dynamic> = ['Apple', 'Gem', 'Hammer', 'Overrider', 'RedCan', 'Stabber'];
 	var itemGRP:FlxTypedGroup<FlxSprite>;
 	var baldiboints:Int = 0;
+	var selectedItem:Int = 0;
 
 	override public function create()
 	{
@@ -32,11 +33,17 @@ class PlayState extends FlxState
 	{
 		for (i in 0...itemGRP.members.length)
 		{
-			if (FlxG.mouse.overlaps(itemGRP.members[i]) && FlxG.mouse.justPressed)
+			if (FlxG.mouse.overlaps(itemGRP.members[i]) && selectedItem == 0)
 			{
-				itemGRP.members[i].setPosition(FlxG.random.float(0, 960), FlxG.random.float(0, 530));
-				itemGRP.members[i].loadGraphic('assets/images/' + items[FlxG.random.int(0, 6)] + '.png');
-				baldiboints += FlxG.random.int(10, 200);
+				selectedItem = i + 1;
+
+				if (FlxG.mouse.justPressed)
+				{
+					itemGRP.members[i].setPosition(FlxG.random.float(0, 960), FlxG.random.float(0, 530));
+					itemGRP.members[i].loadGraphic('assets/images/' + items[FlxG.random.int(0, 6)] + '.png');
+					baldiboints += FlxG.random.int(10, 200);
+					selectedItem = 0;
+				}
 			}
 		}
 
