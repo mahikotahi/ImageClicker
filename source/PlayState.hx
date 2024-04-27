@@ -48,7 +48,7 @@ class PlayState extends FlxState
 
 		add(itemGRP);
 
-		paldboints = new FlxText(10, 20);
+		paldboints = new FlxText(10, 5);
 		paldboints.font = 'assets/data/COMICSANS.TTF';
 		paldboints.size = 24;
 		add(paldboints);
@@ -74,7 +74,7 @@ class PlayState extends FlxState
 					if (FlxG.mouse.justPressed)
 					{
 						itemGRP.members[i].setPosition(FlxG.random.float(0, 960), FlxG.random.float(0, 530));
-						itemGRP.members[i].loadGraphic('assets/images/' + items[FlxG.random.int(0, 6)] + '.png');
+						itemGRP.members[i].loadGraphic('assets/images/' + items[FlxG.random.int(0, 6)] + '');
 						baldiboints += FlxG.random.int(10, 200);
 						selectedItem = 0;
 					}
