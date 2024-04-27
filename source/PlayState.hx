@@ -9,7 +9,7 @@ import sys.FileSystem;
 
 class PlayState extends FlxState
 {
-	var items:Array<Dynamic> = ['Apple', 'Gem', 'Hammer', 'Overrider', 'Stabber'];
+	var items:Array<Dynamic> = ['Apple.png', 'Gem.png', 'Hammer.png', 'Overrider.png', 'Stabber.png'];
 	var itemGRP:FlxTypedGroup<FlxSprite>;
 	var baldiboints:Int = 0;
 	var selectedItem:Int = 0;
@@ -24,12 +24,16 @@ class PlayState extends FlxState
 			if (items == null)
 			{
 				trace('wtf did u do');
-				items = ['Apple', 'Gem', 'Hammer', 'Overrider', 'Stabber'];
+				items = ['Apple.png', 'Gem.png', 'Hammer.png', 'Overrider.png', 'Stabber.png'];
+			}
+			else
+			{
+				trace(items);
 			}
 		}
 		catch (e)
 		{
-			items = ['Apple', 'Gem', 'Hammer', 'Overrider', 'Stabber'];
+			items = ['Apple.png', 'Gem.png', 'Hammer.png', 'Overrider.png', 'Stabber.png'];
 		}
 
 		itemGRP = new FlxTypedGroup<FlxSprite>();
@@ -38,7 +42,7 @@ class PlayState extends FlxState
 		{
 			var sprite:FlxSprite = new FlxSprite(0, 0);
 			sprite.setPosition(FlxG.random.float(0, 960), FlxG.random.float(0, 530));
-			sprite.loadGraphic('assets/images/' + items[FlxG.random.int(0, 6)] + '.png');
+			sprite.loadGraphic('assets/images/' + items[FlxG.random.int(0, 6)] + '');
 			itemGRP.add(sprite);
 		}
 
@@ -63,7 +67,7 @@ class PlayState extends FlxState
 
 			if (FlxG.mouse.overlaps(itemGRP.members[i]))
 			{
-				if (selectedItem == 0 || selectedItem == i + 1)
+				if (selectedItem != 0 || selectedItem != i + 1)
 				{
 					selectedItem = i + 1;
 
@@ -73,13 +77,6 @@ class PlayState extends FlxState
 						itemGRP.members[i].loadGraphic('assets/images/' + items[FlxG.random.int(0, 6)] + '.png');
 						baldiboints += FlxG.random.int(10, 200);
 						selectedItem = 0;
-					}
-				}
-				else
-				{
-					if (selectedItem != 0 && FlxG.mouse.justPressed)
-					{
-						selectedItem = i + 1;
 					}
 				}
 			}
