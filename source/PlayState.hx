@@ -47,7 +47,7 @@ class PlayState extends FlxState
 
 			if (FlxG.mouse.overlaps(itemGRP.members[i]))
 			{
-				if (selectedItem == 0 || selectedItem = i + 1)
+				if (selectedItem == 0 || selectedItem == i + 1)
 				{
 					selectedItem = i + 1;
 
